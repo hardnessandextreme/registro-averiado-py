@@ -59,7 +59,7 @@ def verificar_archivos() -> bool:
     
     return False
 
-def guardar_datos(tipo, marca, modelo, num_serie, num_activo) -> bool:
+def guardar_datos(tipo: str, marca: str, modelo: str, num_serie: str, num_activo: str) -> bool:
     try:
         with open('dañados.csv', mode='a', newline='') as file:
             writer = csv.writer(file, delimiter=';')
