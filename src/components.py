@@ -1,20 +1,22 @@
 from tkinter import Tk, Label, Button, messagebox, ttk, Entry
-from src.funcs import guardar_datos, convertir_excel, limpiar_fields, actualizar_cbs
+from funcs import guardar_datos, convertir_excel, verificar_archivos, cargar_tipos_marcas
 
 def inicializar_componentes() -> None:
+    tipos, marcas = cargar_tipos_marcas()
+    
     ventana = Tk()
     ventana.title("Registro de Equipos Dañados")
     ventana.resizable(False, False)
 
     etiqueta_tipo = Label(ventana, text="Tipo:")
     etiqueta_tipo.grid(row=0, column=0, padx=10, pady=10)
-    combo_tipo = ttk.Combobox(ventana, values="-", state="readonly")
+    combo_tipo = ttk.Combobox(ventana, values=tipos, state="readonly")
     combo_tipo.current(0)
     combo_tipo.grid(row=0, column=1, padx=10, pady=10)
 
     etiqueta_marca = Label(ventana, text="Marca:")
     etiqueta_marca.grid(row=1, column=0, padx=10, pady=10)
-    combo_marca = ttk.Combobox(ventana, values="-", state="readonly")
+    combo_marca = ttk.Combobox(ventana, values=marcas, state="readonly")
     combo_marca.current(0)
     combo_marca.grid(row=1, column=1, padx=10, pady=10)
 
@@ -42,10 +44,17 @@ def inicializar_componentes() -> None:
     boton_convertir_excel = Button(ventana, text="Convertir Excel")
     boton_convertir_excel.grid(row=5, column=1, padx=10, pady=10)
 
+    return ventana
+    
+def abrir_ventana() -> None:
+    if verificar_archivos():
+        messagebox.showinfo("Aviso", "Se han creados los archivos necesarios.")
+    
+    ventana = inicializar_componentes()
     ventana.mainloop()
     
 def main() -> None:
-    inicializar_componentes()
-
+    abrir_ventana()
+    
 if __name__ == "__main__":
     main()
