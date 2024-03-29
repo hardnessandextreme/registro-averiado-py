@@ -1,4 +1,5 @@
 from tkinter import Tk, Label, Button, messagebox, ttk, Entry
+from src.funcs import guardar_datos, convertir_excel, limpiar_fields, actualizar_cbs
 
 def inicializar_componentes() -> None:
     ventana = Tk()
@@ -41,6 +42,8 @@ def inicializar_componentes() -> None:
     boton_convertir_excel = Button(ventana, text="Convertir Excel")
     boton_convertir_excel.grid(row=5, column=1, padx=10, pady=10)
 
+    ventana.mainloop()
+    
 def main() -> None:
     inicializar_componentes()
 
