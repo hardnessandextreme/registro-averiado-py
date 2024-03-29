@@ -16,8 +16,15 @@ def verificar_archivos() -> bool:
         return True
     return False
 
-def guardar_datos() -> None:
-    pass
+def guardar_datos(tipo, marca, modelo, num_serie, num_activo) -> bool:
+    try:
+        with open('dañados.csv', mode='a', newline='') as file:
+            writer = csv.writer(file, delimiter=';')
+            writer.writerow([tipo, marca, modelo, num_serie, num_activo])
+        return True
+    except Exception as e:
+        print(f"Ha ocurrido un error al guardar los datos: {e}")
+        return False
 
 def convertir_excel() -> None:
     pass
