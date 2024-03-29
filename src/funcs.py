@@ -69,6 +69,13 @@ def guardar_datos(tipo, marca, modelo, num_serie, num_activo) -> bool:
         print(f"Ha ocurrido un error al guardar los datos: {e}")
         return False
 
+def cargar_tipos_marcas() -> tuple:
+    with open('src/datos/tipos.txt', 'r') as file:
+        tipos = [line.strip() for line in file.readlines()]
+    with open('src/datos/marcas.txt', 'r') as file:
+        marcas = [line.strip() for line in file.readlines()]
+    return tipos, marcas
+
 def convertir_excel() -> None:
     pass
 
