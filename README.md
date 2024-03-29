@@ -1,0 +1,1 @@
+# registro-averiado-py
