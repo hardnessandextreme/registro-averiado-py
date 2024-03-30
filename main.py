@@ -1,7 +1,10 @@
-from src.components import inicializar_componentes
+from src.components import abrir_ventana
 
 def main() -> None:
-    inicializar_componentes()
+    try:
+        abrir_ventana()
+    except Exception as E:
+        print(f"Ha ocurrido un error: {E}")
 
 if __name__ == "__main__":
     main()
